@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: telegram-bot
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 1 -b 0.0.0.0:$PORT bot:app
+    envVars:
+      - key: BOT_TOKEN
+        value: 7709244900:AAEtjoqKi69pAaDNWCaIMVOCHoGJtQkj-1w
+      - key: ADMIN_ID
+        value: 7318787235
+      - key: CHANNEL_ID
+        value: -1002516369711
+      - key: RENDER_APP_NAME
+        value: telegram-bot
+    autoDeploy: false
